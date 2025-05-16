@@ -5,11 +5,61 @@ public class main {
       Scanner input = new Scanner (System.in);
       boolean rept = true;
       //   aca van las variables
+      String ingreso;
       while (rept)
       {
       //  Empieza aca
+        /*Ingreso y validación de datos a analizar*/
+        do{
+            System.out.println("Ingrese los números separados por ; sin dejar espacios y use . para los decimales");
+            ingreso = input.nextLine();
+            if(!validarCaracteres(ingreso)){ /*Llama al método validarCaracteres*/
+                System.out.println("Entrada inválida, inténtalo de nuevo");
+            }
+        }while(!validarCaracteres(ingreso));/*No termina el bucle hasta que la validación sea positiva*/
+        double[] datos = convertirArray(ingreso);/*El método convertirArray convierte los números ingresados en un array y quedan guardados en esta variable*/
+        /*Selección de cálculos a realizar*/
+        System.out.println("Ingrese las los calculos a realizar separados por ;");
+        System.out.println("1 --> Calcular media\n" +
+                "1 --> Calcular mediana\n" +
+                "2 --> Calcular moda\n" +
+                "3 --> Calcular rango\n" +
+                "4 --> Calcular varianza\n" +
+                "5 --> Calcular desviación estándar\n" +
+                "6 --> Calcular frecuencia absoluta\n" +
+                "7 --> Calcular frecuencia relativa\n" +
+                "8 --> Calcular frecuencia relativa acumulada\n");
+        input = new Scanner(System.in);
 
-
+        String opcionesIngresadas = input.nextLine();
+        double[] opciones = convertirArray(opcionesIngresadas);
+        for(int i = 0; i<opciones.length; i++){
+            if(opciones[i]==1){
+                /*Ejecutar método correspondiente y mostrar resultado*/
+            }
+            if(opciones[i]==2){
+                /*Ejecutar método correspondiente y mostrar resultado*/
+            }
+            if(opciones[i]==3){
+                /*Ejecutar método correspondiente y mostrar resultado*/
+            }
+            if(opciones[i]==4){
+                /*Ejecutar método correspondiente y mostrar resultado*/
+            }
+            if(opciones[i]==5){
+                /*Ejecutar método correspondiente y mostrar resultado*/
+            }
+            if(opciones[i]==6){
+                /*Ejecutar método correspondiente y mostrar resultado*/
+            }
+            if(opciones[i]==7){
+                /*Ejecutar método correspondiente y mostrar resultado*/
+            }
+            if(opciones[i]==8){
+                /*Ejecutar método correspondiente y mostrar resultado*/
+            }
+        }
+      
 
 
 
@@ -31,4 +81,21 @@ public class main {
           }
 
   }
+  public static boolean validarCaracteres(String ingreso){
+        for(char c : ingreso.toCharArray()){
+            if(!Character.isDigit(c) && c != '.' && c != ';'){
+                return false;
+            }
+
+        }
+        return true;
+    }
+public static double[] convertirArray(String opcionesIngresadas){
+        String[] opciones = opcionesIngresadas.split(";");
+        double[] numeros = new double[opciones.length];
+        for(int i=0; i<opciones.length; i++){
+            numeros[i]= Double.parseDouble(opciones[i]);
+        }
+        return numeros;
+    }
   }
